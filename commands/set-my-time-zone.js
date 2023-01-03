@@ -1,6 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
 const { setPlayerInfo } = require('./../memory/mem-manager.js');
-
 
 module.exports = {
 	data: new SlashCommandBuilder()

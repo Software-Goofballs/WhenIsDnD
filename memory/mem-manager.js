@@ -31,12 +31,12 @@ module.exports = {
 		
 		if (nextGame == undefined || nextGame.Date < today) {
 			nextDate = getNextDayOfWeek();
-			return {
-				Owner: "",
-				Main: "",
-				Dishes: {},
+			let newGame = {
 				Date: nextDate
 			};
+			data.Games.unshift(newGame);
+			fs.writeFileSync(memory, JSON.stringify(data, undefined, 4));
+			return newGame;
 		} else {
 			return nextGame;
 		}
@@ -50,7 +50,7 @@ module.exports = {
 		} else {
 			data.Games[0] = newGame;
 		}
-		fs.writeFileSync(memory, JSON.stringify(menu, undefined, 4));
+		fs.writeFileSync(memory, JSON.stringify(data, undefined, 4));
 	},
 	async setPlayerInfo(player, timezone) {
 		let data = await loadData();

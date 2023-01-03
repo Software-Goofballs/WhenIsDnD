@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
 const { getGame, saveGame, getPlayerInfo } = require('./../memory/mem-manager.js');
 const { dayOfPlay, timeOfPlayUTC } = require("./../config.json");
 
@@ -8,7 +8,7 @@ module.exports = {
 		.setDescription('Change info about DnD night')
 		.addStringOption(option => 
 			option.setName('day-of-play')
-			.setDescription('What day are we playin' on?')
+			.setDescription('What day are we playing on?')
 			.addChoices(
 				{ name: 'Monday', value: 1 },
 				{ name: 'Tuesday', value: 2 },
@@ -20,7 +20,7 @@ module.exports = {
 			)
 		).addStringOption(option => 
 			option.setName('time-of-play')
-			.setDescription('When are we playin'? (Military time)')
+			.setDescription('When are we playin? (Military time)')
 		).addBooleanOption(option => 
 			option.setName('cancelled')
 			.setDescription('Are we playing?')

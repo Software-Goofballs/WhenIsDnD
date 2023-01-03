@@ -1,12 +1,11 @@
 {
-	Games: 
-	[
-		{
-			"cancelled": false
-			"Date": "2022-10-28"
-		}
-	],
-	PlayerTimeZones: {
-		"Example_Player":"-05:00"
-	}
+    "Games": [
+        {
+            "Date": "2023-01-02T12:30:00.000Z"
+        }
+    ],
+    "PlayerTimeZones": {
+        "Example_Player": "-05:00",
+        "400120760217239553": "-06:00"
+    }
 }
