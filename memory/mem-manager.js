@@ -1,4 +1,4 @@
-const { dayOfPlay, timeOfPlayUTC } = require("./../config.json");
+const { dayOfPlay, timeOfPlay, defaultTimeZone } = require("./../config.json");
 const fs = require('fs');
 const path = require('path');
 const memory = path.resolve(__dirname, "memory.json");
@@ -19,7 +19,7 @@ const loadData = async () => {
 const getNextDayOfWeek = () => {
 	var resultDate = new Date();
 	resultDate.setUTCDate(resultDate.getUTCDate() + (6 + dayOfPlay - resultDate.getUTCDay()) % 6);
-	return `${resultDate.toISOString().split('T')[0]}T${timeOfPlayUTC}:00.000Z`;
+	return `${resultDate.toISOString().split('T')[0]}T${timeOfPlay}:00.000${defaultTimeZone}`;
 }
 
 module.exports = { 

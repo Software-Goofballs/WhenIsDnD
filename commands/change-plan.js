@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { getGame, saveGame, getPlayerInfo } = require('./../memory/mem-manager.js');
-const { dayOfPlay, timeOfPlayUTC } = require("./../config.json");
+const { dayOfPlay } = require("./../config.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -10,13 +10,13 @@ module.exports = {
 			option.setName('day-of-play')
 			.setDescription('What day are we playing on?')
 			.addChoices(
-				{ name: 'Monday', value: 1 },
-				{ name: 'Tuesday', value: 2 },
-				{ name: 'Wednesday', value: 3 },
-				{ name: 'Thursday', value: 4 },
-				{ name: 'Friday', value: 5 },
-				{ name: 'Saturday', value: 6 },
-				{ name: 'Sunday', value: 0 },
+				{ name: 'Monday', value: 0 },
+				{ name: 'Tuesday', value: 1 },
+				{ name: 'Wednesday', value: 2 },
+				{ name: 'Thursday', value: 3 },
+				{ name: 'Friday', value: 4 },
+				{ name: 'Saturday', value: 5 },
+				{ name: 'Sunday', value: 6 },
 			)
 		).addStringOption(option => 
 			option.setName('time-of-play')
@@ -35,12 +35,12 @@ module.exports = {
 		
 		let plan = await getGame();
 		
-		if (newCancelled) {
+		if (newCancelled != undefined) {
 			plan.cancelled = newCancelled;
 		}
 		let newDate = new Date(plan.Date);
 		if (newDayOfPlay) {
-			newDate.setUTCDate(newDate.getUTCDate() + newDate.getUTCDay() - newDayOfPlay);
+			newDate.setUTCDate(newDate.getUTCDate() - newDate.getUTCDay() + newDayOfPlay);
 		}
 		if (newTimeOfPlay) {
 			const timeRequester = interaction.user.id;
