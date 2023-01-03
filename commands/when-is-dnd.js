@@ -20,7 +20,7 @@ module.exports = {
 		
 		const dateOfPlay = new Date(nextGame.Date,{playerTimeZone})
 		
-		let reply = `The next game is on ${dateOfPlay.toLocaleString('en-US',{timeZone:"America/Los_Angeles"}),replace(',',' at')} in your time zone (${playerTimeZone})`;
+		let reply = `The next game is on ${dateOfPlay.toLocaleString('en-US',{timeZone:"America/Los_Angeles"}).replace(',',' at')} in your time zone (${playerTimeZone})`;
 		
 		if (plan.cancelled) {
 			reply = "D&D is cancelled this week"

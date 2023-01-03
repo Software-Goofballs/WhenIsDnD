@@ -6,7 +6,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('change-plan')
 		.setDescription('Change info about DnD night')
-		.addStringOption(option => 
+		.addIntegerOption(option => 
 			option.setName('day-of-play')
 			.setDescription('What day are we playing on?')
 			.addChoices(
@@ -27,7 +27,7 @@ module.exports = {
 		),
 	async execute(interaction) {
 		// Load inputs
-		const newDayOfPlay = interaction.options.getString('day-of-play');
+		const newDayOfPlay = interaction.options.getInteger('day-of-play');
 		const newTimeOfPlay = interaction.options.getString('time-of-play');
 		const newCancelled = interaction.options.getBoolean('cancelled');
 		
