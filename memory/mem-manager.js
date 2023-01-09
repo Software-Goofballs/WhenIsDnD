@@ -18,7 +18,9 @@ const loadData = async () => {
 
 const getNextDayOfWeek = () => {
 	var resultDate = new Date();
-	resultDate.setUTCDate(resultDate.getUTCDate() + (6 + dayOfPlay - resultDate.getUTCDay()) % 6);
+	while (resultDate.getUTCDate() != dayOfPlay){
+		resultDate.setUTCDate(resultDate.getUTCDate() + 1);
+	}
 	return `${resultDate.toISOString().split('T')[0]}T${timeOfPlay}:00.000${defaultTimeZone}`;
 }
 
