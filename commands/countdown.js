@@ -24,6 +24,10 @@ module.exports = {
 		
 		let reply = `The next game is in ${days} days, ${hours} hours, and ${minutes} minutes`;
 		
+		if (timeDiff < 0) {
+			reply = `D&D already happened today!`;
+		}
+		
 		if (plan.cancelled) {
 			reply = "D&D is cancelled this week"
 		}
