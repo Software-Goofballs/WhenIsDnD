@@ -11,16 +11,17 @@ const zones = {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('when-is-dnd')
-		.setDescription('Ask when D&D is'),
+		.setDescription('Ask when D&D is')
+		.addUserOption(option => option.setName('user').setDescription('Who are you askinf for?')),
 	async execute(interaction) {
 		const plan = await getGame();
-		const timeRequester = interaction.user.id;
+		const timeRequester = interaction.options.getUser('user') || interaction.user.id;
 		const playerTimeZone = await getPlayerInfo(timeRequester);
 		const nextGame = await getGame();
 		
 		const dateOfPlay = new Date(nextGame.Date)
 		
-		let reply = `The next game is on ${dateOfPlay.toLocaleString('en-US',{timeZone:zones[playerTimeZone]}).replace(',',' at')} in your time zone (${zones[playerTimeZone]})`;
+		let reply = `<@${user.id}>, the next game is on ${dateOfPlay.toLocaleString('en-US',{timeZone:zones[playerTimeZone]}).replace(',',' at')} in your time zone (${zones[playerTimeZone]})`;
 		
 		if (plan.cancelled) {
 			reply = "D&D is cancelled this week"
