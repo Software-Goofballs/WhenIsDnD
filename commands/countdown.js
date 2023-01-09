@@ -3,7 +3,7 @@ const { getGame, getPlayerInfo } = require('./../memory/mem-manager.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('when-is-dnd')
+		.setName('countdown')
 		.setDescription('Ask "How Long till DnD?"'),
 	async execute(interaction) {
 		const plan = await getGame();
